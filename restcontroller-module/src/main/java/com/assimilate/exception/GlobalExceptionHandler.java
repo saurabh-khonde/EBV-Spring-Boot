@@ -1,7 +1,5 @@
 package com.assimilate.exception;
 
-import javax.management.relation.RelationNotFoundException;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
