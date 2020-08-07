@@ -22,12 +22,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.assimilate.employee.AuthenticationRequest;
 import com.assimilate.employee.AuthenticationResponse;
+import com.assimilate.exception.EmailVerificationException;
 import com.assimilate.exception.InvalidUserIdPasswordException;
 import com.assimilate.serviceimpl.MyUserDetailsService;
 
 @RestController
 public class AuthenticateEmployee {
-
+ 
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
@@ -48,11 +49,18 @@ public class AuthenticateEmployee {
 			throw new InvalidUserIdPasswordException("Incorrect username or password");
 		}
 
-		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-
-		final String jwt = jwtTokenUtil.generateToken(userDetails);
-
-		return ResponseEntity.ok(new AuthenticationResponse(jwt));
+		final UserDetails userDetails = userDetailsService
+				.loadUserByUsername(authenticationRequest.getUsername());
+				
+		boolean isActive = userDetailsService.isActive(userDetails);
+				
+		if(isActive)
+		{
+			final String jwt = jwtTokenUtil.generateToken(userDetails);
+			return ResponseEntity.ok(new AuthenticationResponse(jwt));
+		}
+		else 
+			throw new EmailVerificationException("Please Verify Registered Email First ");
 
 	}
 
