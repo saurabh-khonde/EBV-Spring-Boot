@@ -10,5 +10,8 @@ public class EmployeeConstants {
 	
 	public final static String FGT_PASS="/forgotPassword";
 	
-
+	public final static String POST_USER="/postUser";
+	
+	public final static String GET_ALL="/getAllUser";
+	
 }
