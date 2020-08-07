@@ -1,5 +1,7 @@
 package com.assimilate.restcontroller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -23,8 +25,13 @@ import com.assimilate.serviceimpl.EmployeeServiceImpl;
 //@ComponentScan(basePackageClasses = RegisterServiceImpl.class)
 public class EmployeeVerificationApplication {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeVerificationApplication.class);
+	
 	public static void main(String[] args) {
 		SpringApplication.run(EmployeeVerificationApplication.class, args);
+		
+		LOGGER.info("Here Loggger Info");
+		LOGGER.warn("Here Logger warn" );
 	}
 
 }
