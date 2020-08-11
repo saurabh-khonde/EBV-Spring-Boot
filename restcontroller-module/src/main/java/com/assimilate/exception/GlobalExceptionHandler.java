@@ -38,6 +38,24 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity(errorDetails, HttpStatus.NOT_FOUND);
 	}
 	
+
+	@ExceptionHandler(RecordDoesNotExistException.class)
+	public ResponseEntity<?> handlerResourceNotFoundException(RecordDoesNotExistException ex,WebRequest request)
+	{
+		ErrorDetails errorDetails=new ErrorDetails(ex.getMessage(),request.getDescription(false));
+	
+	return new ResponseEntity(errorDetails,HttpStatus.NOT_FOUND);
+	}
+	
+	
+	@ExceptionHandler(RecordDoesNotCreatedException.class)
+	public ResponseEntity<?> handlerResourceNotFoundException(RecordDoesNotCreatedException ex,WebRequest request)
+	{
+	ErrorDetails errordetail=new ErrorDetails(ex.getMessage(),request.getDescription(false));
+	
+	return new ResponseEntity(errordetail,HttpStatus.NOT_FOUND); 
+}
+
 	@ExceptionHandler(EmailVerificationException.class)
 	public ResponseEntity<?> handlerResourceNotFoundException(EmailVerificationException ex, WebRequest request)
 	{

@@ -6,7 +6,7 @@ import com.assimilate.employee.AddressdetailsEntity;
 
 public interface AddressdetailsService {
 
-	void postUser(AddressdetailsEntity addressdetailsEntity);
+	AddressdetailsEntity postUser(AddressdetailsEntity addressdetailsEntity);
 
 	List<AddressdetailsEntity> getAllUser();
 
