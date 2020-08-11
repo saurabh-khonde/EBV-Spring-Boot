@@ -28,4 +28,14 @@ public class MyUserDetailsService implements UserDetailsService {
     			
         return new User(userEntity.getEmailId(), userEntity.getPassword(), new ArrayList<>());
     }
+    
+    public boolean isActive(UserDetails userDetails)
+    {
+    	UserEntity userEntity = userRepository.findByEmailIdIgnoreCase(userDetails.getUsername());
+    	
+    	if(userEntity.getIsActive())
+    		return true;
+    	else
+    		return false;
+    }
 }

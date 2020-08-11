@@ -93,15 +93,10 @@ public class EmploymentDetailsEntity {
 	@Column(name="IsDeleted")
 	private Boolean  isDeleted;
 	
-	//@OneToOne
-	//@JoinColumn(name="EmployeeID")
-	//private EmployeeEntity employeeEntity;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "EmployeeId",referencedColumnName="employeeId")
+	@JoinColumn(name="employeeId", nullable=false)
 	private EmployeeEntity employeeEntity;
-	
-	
 	
 
 }

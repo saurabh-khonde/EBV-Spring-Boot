@@ -1,7 +1,5 @@
 package com.assimilate.exception;
 
-import javax.management.relation.RelationNotFoundException;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -40,6 +38,7 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity(errorDetails, HttpStatus.NOT_FOUND);
 	}
 	
+
 	@ExceptionHandler(RecordDoesNotExistException.class)
 	public ResponseEntity<?> handlerResourceNotFoundException(RecordDoesNotExistException ex,WebRequest request)
 	{
@@ -56,12 +55,22 @@ public class GlobalExceptionHandler {
 	
 	return new ResponseEntity(errordetail,HttpStatus.NOT_FOUND); 
 }
-	// Handle Global Exception
-	@ExceptionHandler(Exception.class)
-	public ResponseEntity<?> handlerGlobalException(Exception ex, WebRequest request)
+
+	@ExceptionHandler(EmailVerificationException.class)
+	public ResponseEntity<?> handlerResourceNotFoundException(EmailVerificationException ex, WebRequest request)
 	{
 		ErrorDetails errorDetails = new ErrorDetails(ex.getMessage(), request.getDescription(false));
-		return new ResponseEntity(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity(errorDetails, HttpStatus.NOT_FOUND);
 	}
+	
+	
+	
+//	// Handle Global Exception
+//	@ExceptionHandler(Exception.class)
+//	public ResponseEntity<?> handlerGlobalException(Exception ex, WebRequest request)
+//	{
+//		ErrorDetails errorDetails = new ErrorDetails(ex.getMessage(), request.getDescription(false));
+//		return new ResponseEntity(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+//	}
 
 }
