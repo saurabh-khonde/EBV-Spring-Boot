@@ -17,9 +17,9 @@ public class AddressdetailsServiceImpl implements AddressdetailsService {
 	AddressdetailsRepository addressdetailsRepository;
 
 	@Override
-	public void postUser(AddressdetailsEntity addressdetailsEntity) 
+	public AddressdetailsEntity postUser(AddressdetailsEntity addressdetailsEntity) 
 	{
-		addressdetailsRepository.save(addressdetailsEntity);
+		return addressdetailsRepository.save(addressdetailsEntity);
 		
 		}
 
