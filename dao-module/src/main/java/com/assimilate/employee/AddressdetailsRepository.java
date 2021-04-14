@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AddressdetailsRepository extends JpaRepository<AddressdetailsEntity,Integer> 
 {
-
+//test of git
 }
