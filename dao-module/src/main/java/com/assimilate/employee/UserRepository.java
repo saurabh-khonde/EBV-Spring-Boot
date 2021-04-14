@@ -10,4 +10,7 @@ import com.assimilate.employee.UserEntity;
 public interface UserRepository extends JpaRepository<UserEntity, Integer>{
 	
 	UserEntity findByEmailIdIgnoreCase(String str);
+
+
+// git test for new beranch pooja_solpure
 }
